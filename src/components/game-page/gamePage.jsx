@@ -1,8 +1,8 @@
 
 import { useState, useRef } from 'react'
 import style from './gamePage.module.css'
-import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION } from '../../constants/constants'
-import { randomIntFromInterval, shuffleArray } from '../../utils/utils'
+import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, GAME_PAGE_TITLES } from '../../constants/constants'
+import { randomIntFromInterval, saveResultsLocally, shuffleArray } from '../../utils/utils'
 import Card from '../card/Card'
 
 export default function GamePage(props) {
@@ -12,14 +12,15 @@ export default function GamePage(props) {
     const [countdownRender, setCountdownRender] = useState()
     const [difficulty, setDifficulty] = useState(DIFFICULTY_STATS.EASY)
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
-    const [points, setPoints] = useState(0)
+    const [score, setScore] = useState(0)
     const numberToFind = useRef(null)
 
 
     const updateToFindState = () => {
         setBoardState(BOARD_STATES.PLAYING)
         const num = randomIntFromInterval(1, 9)
-        setTitle(`Where is the number ${num}`)
+        const title = GAME_PAGE_TITLES.WATCHING.replace('{{number}}', num.toString())
+        setTitle(title)
         numberToFind.current = num
     }
 
@@ -42,7 +43,7 @@ export default function GamePage(props) {
         setCardsDistribution(shuffledCards)
         setBoardState(BOARD_STATES.WATCHING)
         startCountDown(difficulty.TIME)
-        setTitle('Memorize the cards')
+        setTitle(GAME_PAGE_TITLES.MEMORIZE)
     }
 
     const changeDifficulty = (newDifficulty) => {
@@ -52,11 +53,15 @@ export default function GamePage(props) {
 
     const checkNumber = (value) => {
         if (value === numberToFind.current) {
-            setPoints(points + difficulty.POINTS)
+            setTitle(GAME_PAGE_TITLES.CONGRATULATIONS)
+            setScore(score + difficulty.POINTS)
             setBoardState(BOARD_STATES.INITIAL)
         }
-        else
+        else {
+            saveResultsLocally(playerName, score)
+            setTitle(GAME_PAGE_TITLES.NICE_TRY)
             setBoardState(BOARD_STATES.ENDED)
+        }
     }
 
     const disableDifficultySelector = () => {
@@ -69,7 +74,7 @@ export default function GamePage(props) {
         <section className={style.gamePage}>
             <button type='button' onClick={goToHomePage}>Back to Title Screen</button>
             <span>Player: {playerName}</span>
-            <span>Points: {points}</span>
+            <span>Points: {score}</span>
             <label className={style.difficultyWrapper} onChange={e => changeDifficulty(e.target.value)}>
                 Difficulty
                 <select disabled={disableDifficultySelector()}>
@@ -103,7 +108,7 @@ export default function GamePage(props) {
             {
                 (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
                     ? <button type='button' onClick={startGame}>
-                        {(BOARD_STATES.INITIAL) ? 'Play' : 'Try again'}
+                        {(BOARD_STATES.INITIAL) ? 'Play' : 'Start again'}
                     </button>
                     : ''
             }
