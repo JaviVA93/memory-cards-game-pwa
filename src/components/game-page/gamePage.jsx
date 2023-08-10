@@ -108,7 +108,7 @@ export default function GamePage(props) {
             {
                 (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
                     ? <button type='button' onClick={startGame}>
-                        {(BOARD_STATES.INITIAL) ? 'Play' : 'Start again'}
+                        {(boardState === BOARD_STATES.INITIAL) ? 'Play' : 'Start again'}
                     </button>
                     : ''
             }
