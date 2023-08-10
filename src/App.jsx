@@ -1,47 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
 import HomePage from './components/home-page/homePage'
 import GamePage from './components/game-page/gamePage'
+import ScoreboardPage from './components/scoreboard-page/ScoreboardPage'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
-  const main = useRef(null)
-  const [content, setContent] = useState()
-
-
-  const updateContentWithHomePage = () => {
-    if (!main.current)
-      return
-
-    setContent(<HomePage goToGamePage={updateContentWithGamePage} />)
-  }
-  const updateContentWithGamePage = (playerName) => {
-    if (!main.current)
-      return
-
-    setContent(<GamePage playerName={playerName} goToHomePage={updateContentWithHomePage} />)
-  }
-
-  const updateContentWithScoreBoard = () => {
-    if (!main.current)
-      return
-
-    setContent('')
-  }
-
-
-  useEffect(() => {
-    setContent(
-      <HomePage
-        goToGamePage={updateContentWithGamePage}
-        goToScoreBoard={updateContentWithScoreBoard}
-      />
-    )
-  }, [])
-
-
   return (
-    <main ref={main}>
-      {content}
+    <main>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/game' element={<GamePage />} />
+        <Route path='/score-board' element={<ScoreboardPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
     </main>
   )
 }

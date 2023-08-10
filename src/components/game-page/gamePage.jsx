@@ -4,9 +4,9 @@ import style from './gamePage.module.css'
 import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, GAME_PAGE_TITLES } from '../../constants/constants'
 import { randomIntFromInterval, saveResultsLocally, shuffleArray } from '../../utils/utils'
 import Card from '../card/Card'
+import { Link, useLocation } from 'react-router-dom'
 
-export default function GamePage(props) {
-    const { playerName, goToHomePage } = props
+export default function GamePage() {
     const [title, setTitle] = useState('Memorize the cards')
     const [boardState, setBoardState] = useState(BOARD_STATES.INITIAL)
     const [countdownRender, setCountdownRender] = useState()
@@ -14,6 +14,9 @@ export default function GamePage(props) {
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
     const [score, setScore] = useState(0)
     const numberToFind = useRef(null)
+
+    const {state} = useLocation();
+    const { playerName } = state;
 
 
     const updateToFindState = () => {
@@ -70,9 +73,10 @@ export default function GamePage(props) {
             : true
     }
 
+
     return (
         <section className={style.gamePage}>
-            <button type='button' onClick={goToHomePage}>Back to Title Screen</button>
+            <Link to='/'>Back to Title Screen</Link>
             <span>Player: {playerName}</span>
             <span>Points: {score}</span>
             <label className={style.difficultyWrapper} onChange={e => changeDifficulty(e.target.value)}>
