@@ -32,5 +32,14 @@ export const DIFFICULTY_STATS = {
     },
 }
 
+export const GAME_PAGE_TITLES = {
+    WATCHING: 'Where is the number {{number}}',
+    CONGRATULATIONS: 'Good job!',
+    NICE_TRY: 'Oh, nice try...',
+    MEMORIZE: 'Memorize the cards'
+}
+
+export const MAX_SCOREBOARD_ENTRIES = 10
+
 
 export const INIT_CARDS_DISTRIBUTION = [1, 2, 3, 4, 5, 6, 7, 8, 9]
