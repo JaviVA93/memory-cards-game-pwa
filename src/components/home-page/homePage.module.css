@@ -1,0 +1,12 @@
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobileGameSvg {
+    width: 150px;
+    height: auto;
+}

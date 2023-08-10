@@ -1,0 +1,11 @@
+body {
+  --color-1: #252B48;
+  --color-2: #445069;
+  --color-3: #5B9A8B;
+  --color-4: #F7E987;
+
+
+  background-color: var(--color-2);
+  color: var(--color-4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
