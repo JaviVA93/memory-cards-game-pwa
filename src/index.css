@@ -1,3 +1,10 @@
+body,
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   --color-1: #252B48;
   --color-2: #445069;
@@ -8,4 +15,5 @@ body {
   background-color: var(--color-2);
   color: var(--color-4);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 20px;
 }

@@ -4,7 +4,7 @@ import style from './homePage.module.css'
 import { useRef } from 'react'
 
 export default function HomePage(props) {
-    const { goToGamePage } = props
+    const { goToGamePage, goToScoreBoard } = props
     const nameInput = useRef(null)
     const startGame = () => {
         if (!nameInput.current || nameInput.current.value === '') {
@@ -23,7 +23,8 @@ export default function HomePage(props) {
                 <span>Name</span>
                 <input ref={nameInput} type="text" />
             </label>
-            <button type='button' onClick={startGame}>Start Game</button>
+            <button type='button' onClick={startGame}>Continue</button>
+            <button type='button' onClick={goToScoreBoard}>Score board</button>
         </section>
     )
 }
