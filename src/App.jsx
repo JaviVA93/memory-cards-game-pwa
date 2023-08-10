@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import './App.css'
 import HomePage from './components/home-page/homePage'
 import GamePage from './components/game-page/gamePage'
 
