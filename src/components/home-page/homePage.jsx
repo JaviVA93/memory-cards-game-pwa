@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 
 import MobileGameSvg from '../assets/mobileGameSvg'
 import style from './homePage.module.css'
