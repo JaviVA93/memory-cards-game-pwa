@@ -1,10 +1,10 @@
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import style from './gamePage.module.css'
 import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, GAME_PAGE_TITLES } from '../../constants/constants'
 import { randomIntFromInterval, saveResultsLocally, shuffleArray } from '../../utils/utils'
 import Card from '../card/Card'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 export default function GamePage() {
     const [title, setTitle] = useState('Memorize the cards')
@@ -13,11 +13,11 @@ export default function GamePage() {
     const [difficulty, setDifficulty] = useState(DIFFICULTY_STATS.EASY)
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
     const [score, setScore] = useState(0)
+    const [playerName, setPlayerName] = useState('')    
     const numberToFind = useRef(null)
-
     const {state} = useLocation();
-    const { playerName } = state;
-
+    const navigate = useNavigate();
+    
 
     const updateToFindState = () => {
         setBoardState(BOARD_STATES.PLAYING)
@@ -73,6 +73,12 @@ export default function GamePage() {
             : true
     }
 
+    useEffect(() => {
+        if (state?.playerName)
+            setPlayerName(state.playerName)
+        else
+            navigate('/')
+    }, [])
 
     return (
         <section className={style.gamePage}>
