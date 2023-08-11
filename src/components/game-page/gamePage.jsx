@@ -120,7 +120,7 @@ export default function GamePage() {
             {
                 (countdownRender)
                     ? <h2>{countdownRender}</h2>
-                    : <div className={style.empySpace}></div>
+                    : <div className={style.emptySpace}></div>
             }
             <div className={style.cardsTable}>
                 {cardsDistribution.map((value, index) => {

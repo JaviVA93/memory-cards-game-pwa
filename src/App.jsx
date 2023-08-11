@@ -7,6 +7,9 @@ function App() {
 
   return (
     <main>
+      <div className='bg'></div>
+      <div className='bg bg2'></div>
+      <div className='bg b3'></div>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/game' element={<GamePage />} />
