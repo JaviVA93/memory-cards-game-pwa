@@ -9,10 +9,10 @@ export default function Card(props) {
 
 
     const revealCard = () => {
-        setCardState(CARD_STATES.VISIBLE)
         if (blocked)
             return
-
+        
+        setCardState(CARD_STATES.VISIBLE)
         setNumberRender(number)
         checkNumber()
     }

@@ -9,7 +9,7 @@ function getCurrentDateFormatted() {
     return `${day}/${month}/${year}`;
 }
 
-export function randomIntFromInterval(min, max) { 
+export function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
@@ -31,10 +31,9 @@ export function saveResultsLocally(playerName, score) {
         date: getCurrentDateFormatted()
     })
 
-    scoreboard.sort( (a, b) => b.score - a.score)
+    scoreboard.sort((a, b) => b.score - a.score)
     if (scoreboard.length > MAX_SCOREBOARD_ENTRIES)
         scoreboard.splice(MAX_SCOREBOARD_ENTRIES)
 
     window.localStorage.setItem('scoreboard', JSON.stringify(scoreboard))
 }
-

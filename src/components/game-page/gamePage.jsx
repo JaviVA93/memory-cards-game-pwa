@@ -13,11 +13,11 @@ export default function GamePage() {
     const [difficulty, setDifficulty] = useState(DIFFICULTY_STATS.EASY)
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
     const [score, setScore] = useState(0)
-    const [playerName, setPlayerName] = useState('')    
+    const [playerName, setPlayerName] = useState('')
     const numberToFind = useRef(null)
-    const {state} = useLocation();
+    const { state } = useLocation();
     const navigate = useNavigate();
-    
+
 
     const updateToFindState = () => {
         setBoardState(BOARD_STATES.PLAYING)
@@ -28,7 +28,6 @@ export default function GamePage() {
     }
 
     const startCountDown = (maxTime) => {
-
         setCountdownRender(maxTime)
         const interval = setInterval(() => {
             maxTime--
@@ -105,9 +104,9 @@ export default function GamePage() {
                     : ''
             }
             <div className={style.cardsTable}>
-                {cardsDistribution.map(value => {
+                {cardsDistribution.map((value, index) => {
                     return (
-                        <Card key={value}
+                        <Card key={`${index}-id`}
                             number={value}
                             state={(boardState === BOARD_STATES.WATCHING) ? CARD_STATES.VISIBLE : CARD_STATES.HIDDEN}
                             blocked={(boardState === BOARD_STATES.PLAYING) ? false : true}
