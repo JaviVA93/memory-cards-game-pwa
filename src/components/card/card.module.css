@@ -1,7 +1,7 @@
 .card {
     position: relative;
-    width: 60px;
-    min-height: 90px;
+    width: 100%;
+    aspect-ratio: 63/88;
     background-color: transparent;
 }
 
