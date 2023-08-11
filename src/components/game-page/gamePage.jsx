@@ -135,7 +135,7 @@ export default function GamePage() {
             </div>
             {
                 (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
-                    ? <button type='button' onClick={startGame}>
+                    ? <button className={style.mainCta} type='button' onClick={startGame}>
                         {buttonText}
                     </button>
                     : ''

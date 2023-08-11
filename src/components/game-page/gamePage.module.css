@@ -17,9 +17,15 @@
 }
 
 .quitMenu {
+    display: flex;
     text-decoration: none;
     text-transform: uppercase;
     color: var(--color-3);
+    transition: transform 0.5s ease-out;
+}
+
+.quitMenu:hover {
+    transform: scale(1.1);
 }
 
 .topInfo .right {
@@ -57,6 +63,27 @@
     justify-items: center;
     justify-content: center;
     width: 97%;
+}
+
+.mainCta {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-4);
+    background-color: var(--color-1);
+    border: 0;
+    border-radius: 4px;
+    padding: 10px 25px;
+    transition: all 0.5s ease-out;
+}
+
+.mainCta:hover {
+    transform: scale(1.1);
+}
+
+.mainCta:active {
+    color: var(--color-1);
+    background-color: var(--color-4);
 }
 
 @keyframes fromRight {
