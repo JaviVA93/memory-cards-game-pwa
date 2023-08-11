@@ -63,6 +63,7 @@ export default function GamePage() {
             setScore(score + difficulty.POINTS)
             setBoardState(BOARD_STATES.INITIAL)
             setButtonText('Next round')
+            window.navigator?.vibrate?.([300, 300])
         }
         else {
             saveResultsLocally(playerName, score)
@@ -71,6 +72,7 @@ export default function GamePage() {
             setScore(0)
             setBoardState(BOARD_STATES.ENDED)
             setButtonText('Start again')
+            window.navigator?.vibrate?.(1000)
         }
     }
 
