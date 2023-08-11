@@ -6,7 +6,7 @@
     align-items: center;
     gap: 15px;
     animation: fromRight 0.5s ease-out;
-    margin: 20px 0;
+    margin: clamp(10px, -27.17px + 8.75vw, 40px) 0;
 }
 
 .topInfo {
@@ -34,6 +34,12 @@
     align-items: flex-end;
     gap: 5px;
 }
+.topInfo .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
 
 .difficultyWrapper {
     display: flex;
@@ -42,14 +48,20 @@
     gap: 5px;
 }
 
+.difficultyWrapper select {
+    background-color: var(--color-2);
+    color: var(--color-4);
+    border-radius: 4px;
+}
+
 .title {
-    font-size: 28px;
+    font-size: clamp(22px, 14.57px + 1.75vw, 28px);
     text-align: center;
     margin-top: 15px;
 }
 
 .gamePage h2 {
-    font-size: 26px;
+    font-size: clamp(20px, 12.57px + 1.75vw, 26px);
 }
 
 .emptySpace {
@@ -57,6 +69,7 @@
 }
 
 .cardsTable {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, minmax(60px, 135px));
     gap: 15px;
@@ -66,24 +79,30 @@
 }
 
 .mainCta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 18px;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--color-4);
     background-color: var(--color-1);
-    border: 0;
+    border: 1px solid var(--color-4);
     border-radius: 4px;
     padding: 10px 25px;
     transition: all 0.5s ease-out;
 }
 
 .mainCta:hover {
-    transform: scale(1.1);
+    color: var(--color-1);
+    background-color: var(--color-4);
+    border: 1px solid var(--color-1);
 }
 
 .mainCta:active {
-    color: var(--color-1);
-    background-color: var(--color-4);
+    filter: brightness(0.6);
 }
 
 @keyframes fromRight {

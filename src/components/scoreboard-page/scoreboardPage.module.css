@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: clamp(10px, -27.17px + 8.75vw, 40px) 20px;
 }
 
 .scoreBoard h1 {

@@ -5,6 +5,7 @@ import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, G
 import { randomIntFromInterval, saveResultsLocally, shuffleArray } from '../../utils/utils'
 import Card from '../card/Card'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import BackArrowSvg from '../assets/backArrowSvg'
 
 export default function GamePage() {
     const [title, setTitle] = useState('Memorize the cards')
@@ -91,11 +92,13 @@ export default function GamePage() {
         <section className={style.gamePage}>
             <div className={style.topInfo}>
                 <div className={style.left}>
-                    <Link className={style.quitMenu} to='/'>Quit to menu</Link>
+                    <Link className={style.quitMenu} to='/'>
+                        <BackArrowSvg />
+                    </Link>
+                    <span>Points: {score}</span>
                 </div>
                 <div className={style.right}>
                     <span>Player: {playerName}</span>
-                    <span>Points: {score}</span>
                     <label className={style.difficultyWrapper} onChange={e => changeDifficulty(e.target.value)}>
                         Difficulty
                         <select disabled={disableDifficultySelector()}>
@@ -132,14 +135,14 @@ export default function GamePage() {
                             checkNumber={() => checkNumber(value)} />
                     )
                 })}
+                {
+                    (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
+                        ? <button className={style.mainCta} type='button' onClick={startGame}>
+                            {buttonText}
+                        </button>
+                        : ''
+                }
             </div>
-            {
-                (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
-                    ? <button className={style.mainCta} type='button' onClick={startGame}>
-                        {buttonText}
-                    </button>
-                    : ''
-            }
         </section>
     )
 }

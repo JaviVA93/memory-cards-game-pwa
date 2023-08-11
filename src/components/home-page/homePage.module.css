@@ -5,7 +5,7 @@
     align-items: center;
     gap: 15px;
     animation: fromRight 0.5s ease-out;
-    margin: 20px;
+    margin: clamp(10px, -27.17px + 8.75vw, 40px) 20px;
     height: calc(100vh - 40px);
     max-height: 600px;
 }
