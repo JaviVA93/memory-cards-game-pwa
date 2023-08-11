@@ -22,7 +22,7 @@ export default function ScoreboardPage() {
                     })}
                 </tbody>
             </table>
-            <Link to='/'>Back home</Link>
+            <Link className={style.quitMenu} to='/'>Back home</Link>
         </section>
     )
 }

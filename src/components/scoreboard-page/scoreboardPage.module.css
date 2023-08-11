@@ -47,6 +47,22 @@
     font-size: 20px;
 }
 
+.quitMenu {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-3);
+    margin-top: 20px;
+    transition: transform 0.5s ease-out;
+    animation: fromBottom 1s ease-out;
+    animation-delay: 0.1s;
+}
+
+.quitMenu:hover {
+    transform: scale(1.1);
+}
+
 
 @keyframes fromBottom {
     from {
