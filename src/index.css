@@ -5,6 +5,10 @@ body * {
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   --color-1: #252B48;
   --color-2: #445069;
@@ -15,7 +19,11 @@ body {
   background-color: var(--color-2);
   color: var(--color-4);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 20px;
 
   overflow-x: hidden;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
 }

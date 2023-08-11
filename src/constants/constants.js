@@ -8,6 +8,7 @@ export const BOARD_STATES = {
     WATCHING: 'watching',
     PLAYING: 'playing',
     ENDED: 'ended',
+    BETWEEN_ROUNDS: 'betweenrounds',
     INITIAL: 'init'
 }
 

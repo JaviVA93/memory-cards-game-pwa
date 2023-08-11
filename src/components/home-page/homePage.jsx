@@ -19,7 +19,7 @@ export default function HomePage() {
 
     return (
         <section className={style.home}>
-            <h1>Memory Cards Game</h1>
+            <h1 className={style.title}>Memory Cards Game</h1>
             <MobileGameSvg className={style.mobileGameSvg} />
             <label>
                 <span>Name</span>

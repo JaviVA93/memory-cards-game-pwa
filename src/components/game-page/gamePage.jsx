@@ -12,6 +12,8 @@ export default function GamePage() {
     const [countdownRender, setCountdownRender] = useState()
     const [difficulty, setDifficulty] = useState(DIFFICULTY_STATS.EASY)
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
+    const [buttonText, setButtonText] = useState('Start')
+    const [pointsTextOnEnd, setPointsTextOnEnd] = useState()
     const [score, setScore] = useState(0)
     const [playerName, setPlayerName] = useState('')
     const numberToFind = useRef(null)
@@ -46,6 +48,7 @@ export default function GamePage() {
         setBoardState(BOARD_STATES.WATCHING)
         startCountDown(difficulty.TIME)
         setTitle(GAME_PAGE_TITLES.MEMORIZE)
+        setPointsTextOnEnd()
     }
 
     const changeDifficulty = (newDifficulty) => {
@@ -58,13 +61,18 @@ export default function GamePage() {
             setTitle(GAME_PAGE_TITLES.CONGRATULATIONS)
             setScore(score + difficulty.POINTS)
             setBoardState(BOARD_STATES.INITIAL)
+            setButtonText('Next round')
         }
         else {
             saveResultsLocally(playerName, score)
             setTitle(GAME_PAGE_TITLES.NICE_TRY)
+            setPointsTextOnEnd(`You did ${score} points!`)
+            setScore(0)
             setBoardState(BOARD_STATES.ENDED)
+            setButtonText('Start again')
         }
     }
+
 
     const disableDifficultySelector = () => {
         return (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
@@ -81,27 +89,38 @@ export default function GamePage() {
 
     return (
         <section className={style.gamePage}>
-            <Link to='/'>Back to Title Screen</Link>
-            <span>Player: {playerName}</span>
-            <span>Points: {score}</span>
-            <label className={style.difficultyWrapper} onChange={e => changeDifficulty(e.target.value)}>
-                Difficulty
-                <select disabled={disableDifficultySelector()}>
-                    <option value={DIFFICULTY_STATS.EASY.ID}>
-                        {DIFFICULTY_STATS.EASY.TEXT} +{DIFFICULTY_STATS.EASY.POINTS}
-                    </option>
-                    <option value={DIFFICULTY_STATS.MEDIUM.ID}>
-                        {DIFFICULTY_STATS.MEDIUM.TEXT} +{DIFFICULTY_STATS.MEDIUM.POINTS}</option>
-                    <option value={DIFFICULTY_STATS.HARD.ID}>
-                        {DIFFICULTY_STATS.HARD.TEXT} +{DIFFICULTY_STATS.HARD.POINTS}
-                    </option>
-                </select>
-            </label>
-            <h1>{title}</h1>
+            <div className={style.topInfo}>
+                <div className={style.left}>
+                    <Link className={style.quitMenu} to='/'>Quit to menu</Link>
+                </div>
+                <div className={style.right}>
+                    <span>Player: {playerName}</span>
+                    <span>Points: {score}</span>
+                    <label className={style.difficultyWrapper} onChange={e => changeDifficulty(e.target.value)}>
+                        Difficulty
+                        <select disabled={disableDifficultySelector()}>
+                            <option value={DIFFICULTY_STATS.EASY.ID}>
+                                {DIFFICULTY_STATS.EASY.TEXT} +{DIFFICULTY_STATS.EASY.POINTS}
+                            </option>
+                            <option value={DIFFICULTY_STATS.MEDIUM.ID}>
+                                {DIFFICULTY_STATS.MEDIUM.TEXT} +{DIFFICULTY_STATS.MEDIUM.POINTS}</option>
+                            <option value={DIFFICULTY_STATS.HARD.ID}>
+                                {DIFFICULTY_STATS.HARD.TEXT} +{DIFFICULTY_STATS.HARD.POINTS}
+                            </option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <h1 className={style.title}>
+                {title}
+            </h1>
+            {
+                pointsTextOnEnd ? <h2>{pointsTextOnEnd}</h2> : ''
+            }
             {
                 (countdownRender)
                     ? <h2>{countdownRender}</h2>
-                    : ''
+                    : <div className={style.empySpace}></div>
             }
             <div className={style.cardsTable}>
                 {cardsDistribution.map((value, index) => {
@@ -117,7 +136,7 @@ export default function GamePage() {
             {
                 (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
                     ? <button type='button' onClick={startGame}>
-                        {(boardState === BOARD_STATES.INITIAL) ? 'Play' : 'Start again'}
+                        {buttonText}
                     </button>
                     : ''
             }

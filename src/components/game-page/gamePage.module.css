@@ -6,12 +6,48 @@
     align-items: center;
     gap: 15px;
     animation: fromRight 0.5s ease-out;
+    margin: 20px 0;
 }
 
+.topInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.quitMenu {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-3);
+}
+
+.topInfo .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
 
 .difficultyWrapper {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.title {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.gamePage h2 {
+    font-size: 26px;
+}
+
+.empySpace {
+    height: 29px;
 }
 
 .cardsTable {
