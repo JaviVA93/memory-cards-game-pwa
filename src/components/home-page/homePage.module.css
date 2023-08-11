@@ -1,4 +1,3 @@
-
 .home {
     position: relative;
     display: flex;
@@ -7,11 +6,15 @@
     gap: 15px;
     animation: fromRight 0.5s ease-out;
     margin: 20px;
+    height: calc(100vh - 40px);
+    max-height: 600px;
 }
 
 .title {
+    color: var(--color-4);
     font-size: 32px;
     text-align: center;
+    text-shadow: 1px 2px var(--color-3);
     animation: float 3s ease-in-out infinite;
     animation-delay: 0.5s;
 }
@@ -19,7 +22,71 @@
 .mobileGameSvg {
     width: 150px;
     height: auto;
+    flex-shrink: 0;
 }
+
+.nameWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.nameWrapper span {
+    font-size: 20px;
+}
+
+.nameInput {
+    all: unset;
+    background-color: var(--color-1);
+    padding: 5px;
+    border: 1px solid var(--color-4);
+    text-align: center;
+    cursor: text;
+}
+
+.continueBtn {
+    font-size: 16px;
+    color: var(--color-4);
+    background-color: var(--color-1);
+    padding: 10px 25px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+
+.scoreBtn {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--color-3);
+    background-color: var(--color-2);
+    outline: 1px solid var(--color-3);
+    margin-top: auto;
+    margin-bottom: 10px;
+    padding: 7px 20px;
+    border: 0;
+    border-radius: 4px;
+    transition: all 0.5s ease-out;
+}
+
+.shake {
+    animation: shaking 0.5s linear;
+    animation-iteration-count: 2;
+}
+
+.continueBtn:hover,
+.scoreBtn:hover {
+    transform: scale(1.1);
+}
+
+.continueBtn:active,
+.scoreBtn:active {
+    filter: brightness(0.8);
+}
+
+
 
 @keyframes fromRight {
     from {
@@ -27,9 +94,32 @@
         right: 50vw;
         transform: translateX(-50%);
     }
+
     to {
         opacity: 1;
         right: 0;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shaking {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(5px);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+
+    100% {
         transform: translateX(0);
     }
 }
@@ -38,15 +128,19 @@
     0% {
         transform: rotateX(0) rotateY(0);
     }
+
     25% {
         transform: rotateX(180deg) rotateY(180deg);
     }
+
     50% {
         transform: rotateX(360deg);
     }
+
     75% {
         transform: rotateX(180deg);
     }
+
     100% {
         transform: rotateX(360deg);
     }

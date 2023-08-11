@@ -10,7 +10,8 @@ export default function HomePage() {
 
     const startGame = () => {
         if (!nameInput.current || nameInput.current.value === '') {
-            console.log('Insert your name first')
+            nameInput.current.classList.add(style.shake)
+            setTimeout(() => nameInput.current.classList.remove(style.shake), 1100)
             return
         }
 
@@ -21,12 +22,12 @@ export default function HomePage() {
         <section className={style.home}>
             <h1 className={style.title}>Memory Cards Game</h1>
             <MobileGameSvg className={style.mobileGameSvg} />
-            <label>
-                <span>Name</span>
-                <input ref={nameInput} type="text" />
+            <label className={style.nameWrapper}>
+                <span>Enter your Name</span>
+                <input className={style.nameInput} ref={nameInput} type="text" />
             </label>
-            <button onClick={startGame}>Continue</button>
-            <Link to='/score-board'>Score board</Link>
+            <button className={style.continueBtn} onClick={startGame}>Continue</button>
+            <Link className={style.scoreBtn} to='/score-board'>Score board</Link>
         </section>
     )
 }
