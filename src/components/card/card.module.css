@@ -1,7 +1,49 @@
 .card {
+    position: relative;
+    width: 60px;
+    min-height: 90px;
+    background-color: transparent;
+}
+
+.innerCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border: 1px solid var(--color-1);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card.hidden .innerCard {
+    transform: rotateY(180deg);
+  }
+  
+
+.cardFront, 
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+.cardFront {
     display: grid;
     place-items: center;
-    width: 60px;
-    height: 90px;
-    border: 1px solid var(--color-1);
+    font-size: 23px;
+    width: 100%;
+    height: 100%;
+    color: var(--color-1);
+    background-color: var(--color-4);
+}
+
+.cardBack {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
 }
