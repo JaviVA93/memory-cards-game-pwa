@@ -8,7 +8,7 @@ import { MemoryRouter } from "react-router-dom";
 describe('HomePage Component', () => {
     it('should render', () => {
         render(
-            <MemoryRouter initialEntries={["/"]}>
+            <MemoryRouter>
                 <HomePage />
             </MemoryRouter>
         )
@@ -17,7 +17,7 @@ describe('HomePage Component', () => {
     it('should have the title "Memory Cards Game"', () => {
         cleanup()
         render(
-            <MemoryRouter initialEntries={["/"]}>
+            <MemoryRouter>
                 <HomePage />
             </MemoryRouter>
         )
