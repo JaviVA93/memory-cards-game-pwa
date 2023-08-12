@@ -10,7 +10,7 @@ function App() {
       <div className='bg'></div>
       <div className='bg bg2'></div>
       <div className='bg b3'></div>
-      <audio id="background-music">
+      <audio id="background-music" loop>
         <source src="/lofi-study.mp3" type="audio/mpeg" />
       </audio>
       <Routes>
