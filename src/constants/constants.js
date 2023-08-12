@@ -1,7 +1,8 @@
 
 export const CARD_STATES = {
     HIDDEN: 'hidden',
-    VISIBLE: 'visible'
+    VISIBLE: 'visible',
+    RESOLVED: 'resolved'
 }
 
 export const BOARD_STATES = {

@@ -34,9 +34,18 @@ export default function Card(props) {
     }
 
     useEffect(() => {
-        (state === CARD_STATES.HIDDEN) ? setNumberRender('') : setNumberRender(number)
+        if (state === CARD_STATES.HIDDEN) {
+            setNumberRender('')
+        }
+        else
+            setNumberRender(number)
+        
+        if (state !== CARD_STATES.RESOLVED) {
+            setRevealSuccess(null)
+        }
+
         setCardState(state)
-        setRevealSuccess(null)
+        
     }, [state, number])
 
     return (

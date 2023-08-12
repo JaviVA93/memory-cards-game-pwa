@@ -58,10 +58,11 @@ export default function GamePage() {
     }
 
     const checkNumber = (value) => {
+        setBoardState(BOARD_STATES.BETWEEN_ROUNDS)
         if (value === numberToFind.current) {
             setTitle(GAME_PAGE_TITLES.CONGRATULATIONS)
             setScore(score + difficulty.POINTS)
-            setBoardState(BOARD_STATES.INITIAL)
+            // setBoardState(BOARD_STATES.INITIAL)
             setButtonText('Next round')
             window.navigator?.vibrate?.([125, 75, 125])
             return true
@@ -78,6 +79,14 @@ export default function GamePage() {
 
     }
 
+    const getCardState = () => {
+        if (boardState === BOARD_STATES.WATCHING)
+            return CARD_STATES.VISIBLE
+        else if (boardState === BOARD_STATES.BETWEEN_ROUNDS || boardState === BOARD_STATES.ENDED)
+            return CARD_STATES.RESOLVED
+        
+        return CARD_STATES.HIDDEN
+    }
 
     const disableDifficultySelector = () => {
         return (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
@@ -134,13 +143,13 @@ export default function GamePage() {
                     return (
                         <Card key={`${index}-id`}
                             number={value}
-                            state={(boardState === BOARD_STATES.WATCHING) ? CARD_STATES.VISIBLE : CARD_STATES.HIDDEN}
+                            state={getCardState()}
                             blocked={(boardState === BOARD_STATES.PLAYING) ? false : true}
                             checkNumber={checkNumber} />
                     )
                 })}
                 {
-                    (boardState === BOARD_STATES.INITIAL || boardState === BOARD_STATES.ENDED)
+                    (boardState !== BOARD_STATES.WATCHING && boardState !== BOARD_STATES.PLAYING)
                         ? <button className={style.mainCta} type='button' onClick={startGame}>
                             {buttonText}
                         </button>
