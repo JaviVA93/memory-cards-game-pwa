@@ -24,5 +24,4 @@ describe('HomePage Component', () => {
         expect(screen.getByText('Memory Cards Game'))
     })
 
-    
 })

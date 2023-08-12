@@ -23,6 +23,9 @@ export default function HomePage() {
     }
 
     const setAudioHandle = () => {
+        if (!document.querySelector('#background-music'))
+            return
+
         if (document.querySelector('#background-music').paused) {
             document.querySelector('#background-music').play()
             setAudioState(AUDIO_STATE.ON)
@@ -34,6 +37,9 @@ export default function HomePage() {
     }
 
     useEffect(() => {
+        if (!document.querySelector('#background-music'))
+            return
+
         (document.querySelector('#background-music').paused) 
             ? setAudioState(AUDIO_STATE.OFF)
             : setAudioState(AUDIO_STATE.ON)
@@ -49,7 +55,7 @@ export default function HomePage() {
             </label>
             <button className={style.continueBtn} onClick={startGame}>Continue</button>
             <button className={style.audioBtn} onClick={setAudioHandle}>
-                {(audioState === AUDIO_STATE.ON)
+                {(!!document.querySelector('#background-music') && audioState === AUDIO_STATE.ON)
                     ? <SpeakerAudioOnSvg />
                     : <SpeakerAudioOffSvg />
                 }
