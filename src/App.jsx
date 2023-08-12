@@ -10,6 +10,9 @@ function App() {
       <div className='bg'></div>
       <div className='bg bg2'></div>
       <div className='bg b3'></div>
+      <audio id="background-music">
+        <source src="/lofi-study.mp3" type="audio/mpeg" />
+      </audio>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/game' element={<GamePage />} />

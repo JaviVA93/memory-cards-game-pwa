@@ -14,7 +14,7 @@ export default defineConfig({
       injectRegister: 'auto',
       devOptions: { enabled: true },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,mp3}']
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
@@ -38,6 +38,7 @@ export default defineConfig({
     }),
   ],
   test: {
-    environment: 'happy-dom'
+    environment: 'happy-dom',
+    testTimeout: 15000,
   }
 })

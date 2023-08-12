@@ -1,7 +1,8 @@
 
 export const CARD_STATES = {
     HIDDEN: 'hidden',
-    VISIBLE: 'visible'
+    VISIBLE: 'visible',
+    RESOLVED: 'resolved'
 }
 
 export const BOARD_STATES = {
@@ -44,3 +45,8 @@ export const MAX_SCOREBOARD_ENTRIES = 10
 
 
 export const INIT_CARDS_DISTRIBUTION = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+export const AUDIO_STATE = {
+    ON: 'on',
+    OFF: 'off'
+}
