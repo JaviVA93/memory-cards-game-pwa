@@ -3,6 +3,7 @@
     width: 100%;
     aspect-ratio: 1/1;
     background-color: transparent;
+    border: 0;
 }
 
 .innerCard {
@@ -12,7 +13,7 @@
     text-align: center;
     transition: transform 0.5s;
     transform-style: preserve-3d;
-    border: 1px solid var(--color-3);
+    outline: 1px solid var(--color-3);
     border-radius: 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

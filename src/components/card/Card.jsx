@@ -23,7 +23,7 @@ export default function Card(props) {
     }, [state, number])
 
     return (
-        <div className={`${style.card} ${(cardState === CARD_STATES.HIDDEN) ? style.hidden : ''}`}
+        <button className={`${style.card} ${(cardState === CARD_STATES.HIDDEN) ? style.hidden : ''}`}
             onClick={revealCard}>
             <div className={style.innerCard}>
                 <div className={style.cardFront}>
@@ -32,6 +32,6 @@ export default function Card(props) {
                 <div className={style.cardBack}>
                 </div>
             </div>
-        </div>
+        </button>
     )
 }
