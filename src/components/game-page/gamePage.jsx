@@ -64,16 +64,18 @@ export default function GamePage() {
             setBoardState(BOARD_STATES.INITIAL)
             setButtonText('Next round')
             window.navigator?.vibrate?.([125, 75, 125])
+            return true
         }
-        else {
-            saveResultsLocally(playerName, score)
-            setTitle(GAME_PAGE_TITLES.NICE_TRY)
-            setPointsTextOnEnd(`You did ${score} points!`)
-            setScore(0)
-            setBoardState(BOARD_STATES.ENDED)
-            setButtonText('Start again')
-            window.navigator?.vibrate?.(1000)
-        }
+
+        saveResultsLocally(playerName, score)
+        setTitle(GAME_PAGE_TITLES.NICE_TRY)
+        setPointsTextOnEnd(`You did ${score} points!`)
+        setScore(0)
+        setBoardState(BOARD_STATES.ENDED)
+        setButtonText('Start again')
+        window.navigator?.vibrate?.(1000)
+        return false
+
     }
 
 
@@ -134,7 +136,7 @@ export default function GamePage() {
                             number={value}
                             state={(boardState === BOARD_STATES.WATCHING) ? CARD_STATES.VISIBLE : CARD_STATES.HIDDEN}
                             blocked={(boardState === BOARD_STATES.PLAYING) ? false : true}
-                            checkNumber={() => checkNumber(value)} />
+                            checkNumber={checkNumber} />
                     )
                 })}
                 {
