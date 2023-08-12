@@ -23,6 +23,9 @@
     width: 150px;
     height: auto;
     flex-shrink: 0;
+    fill: var(--color-1);
+    filter: drop-shadow(3px 5px 6px var(--color-3));
+    margin-top: 20px;
 }
 
 .nameWrapper {
