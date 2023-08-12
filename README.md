@@ -2,6 +2,8 @@
 
 Welcome to *Memory Cards Game*! This is a small funny game built using Vite and React.
 
+Start playing here: https://memory-cards-game-pwa.javiva.dev/
+
 ## Getting Started
 
 Follow these steps to get the project up and running on your local machine.
