@@ -6,7 +6,7 @@ import { INIT_CARDS_DISTRIBUTION } from "../constants/constants";
 
 
 
-describe('HomePage Component', () => {
+describe('GamePage Component', () => {
     it('should render', () => {
         render(
             <MemoryRouter>
