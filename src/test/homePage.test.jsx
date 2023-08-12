@@ -1,26 +1,28 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import HomePage from "../components/home-page/homePage"
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 
 
-describe('HomePage', () => {
+describe('HomePage Component', () => {
     it('should render', () => {
         render(
-            <BrowserRouter>
+            <MemoryRouter initialEntries={["/"]}>
                 <HomePage />
-            </BrowserRouter>
+            </MemoryRouter>
         )
     })
 
     it('should have the title "Memory Cards Game"', () => {
         cleanup()
         render(
-            <BrowserRouter>
+            <MemoryRouter initialEntries={["/"]}>
                 <HomePage />
-            </BrowserRouter>
+            </MemoryRouter>
         )
-        screen.getByText('Memory Cards Game')
+        expect(screen.getByText('Memory Cards Game'))
     })
+
+    
 })
