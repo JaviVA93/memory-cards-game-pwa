@@ -29,7 +29,7 @@ export default function Card(props) {
 
         if (revealSuccess === false)
             classes += ` ${style.revealError}`
-
+        
         return classes
     }
 
@@ -39,25 +39,23 @@ export default function Card(props) {
         }
         else
             setNumberRender(number)
-        
+
         if (state !== CARD_STATES.RESOLVED) {
             setRevealSuccess(null)
         }
 
         setCardState(state)
-        
+
     }, [state, number])
 
     return (
         <button className={getClasses()}
+            disabled={blocked}
             onClick={revealCard}>
-            <div className={style.innerCard}>
-                <div className={style.cardFront}>
-                    {numberRender}
-                </div>
-                <div className={style.cardBack}>
-                </div>
+            <div className={`${style.cardFront} ${style.innerCard}`}>
+                {numberRender}
             </div>
+            <div className={`${style.cardBack} ${style.innerCard}`}></div>
         </button>
     )
 }
