@@ -1,19 +1,19 @@
 
 import { useState, useRef, useEffect } from 'react'
 import style from './gamePage.module.css'
-import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, GAME_PAGE_TITLES } from '../../constants/constants'
+import { BOARD_STATES, DIFFICULTY_STATS, CARD_STATES, INIT_CARDS_DISTRIBUTION, GAME_PAGE_TITLES, GAME_PAGE_BUTTON_TEXTS, GAME_PAGE_END_TITLE } from '../../constants/constants'
 import { randomIntFromInterval, saveResultsLocally, shuffleArray } from '../../utils/utils'
 import Card from '../card/Card'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import BackArrowSvg from '../assets/backArrowSvg'
 
 export default function GamePage() {
-    const [title, setTitle] = useState('Memorize the cards')
+    const [title, setTitle] = useState(GAME_PAGE_TITLES.MEMORIZE)
     const [boardState, setBoardState] = useState(BOARD_STATES.INITIAL)
     const [countdownRender, setCountdownRender] = useState()
     const [difficulty, setDifficulty] = useState(DIFFICULTY_STATS.EASY)
     const [cardsDistribution, setCardsDistribution] = useState(INIT_CARDS_DISTRIBUTION)
-    const [buttonText, setButtonText] = useState('Start')
+    const [buttonText, setButtonText] = useState(GAME_PAGE_BUTTON_TEXTS.START)
     const [pointsTextOnEnd, setPointsTextOnEnd] = useState()
     const [score, setScore] = useState(0)
     const [playerName, setPlayerName] = useState('')
@@ -62,18 +62,17 @@ export default function GamePage() {
         if (value === numberToFind.current) {
             setTitle(GAME_PAGE_TITLES.CONGRATULATIONS)
             setScore(score + difficulty.POINTS)
-            // setBoardState(BOARD_STATES.INITIAL)
-            setButtonText('Next round')
+            setButtonText(GAME_PAGE_BUTTON_TEXTS.NEXT_ROUND)
             window.navigator?.vibrate?.([125, 75, 125])
             return true
         }
 
         saveResultsLocally(playerName, score)
         setTitle(GAME_PAGE_TITLES.NICE_TRY)
-        setPointsTextOnEnd(`You did ${score} points!`)
+        setPointsTextOnEnd(GAME_PAGE_END_TITLE.replace('{{score}}', score))
         setScore(0)
         setBoardState(BOARD_STATES.ENDED)
-        setButtonText('Start again')
+        setButtonText(GAME_PAGE_BUTTON_TEXTS.TRY_AGAIN)
         window.navigator?.vibrate?.(1000)
         return false
 

@@ -41,8 +41,15 @@ export const GAME_PAGE_TITLES = {
     MEMORIZE: 'Memorize the cards'
 }
 
-export const MAX_SCOREBOARD_ENTRIES = 10
+export const GAME_PAGE_END_TITLE = 'You did {{score}} points!'
 
+export const GAME_PAGE_BUTTON_TEXTS = {
+    START: 'Start',
+    TRY_AGAIN: 'Start again',
+    NEXT_ROUND: 'Next round',
+}
+
+export const MAX_SCOREBOARD_ENTRIES = 10
 
 export const INIT_CARDS_DISTRIBUTION = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
